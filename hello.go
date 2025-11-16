@@ -4,20 +4,44 @@ package main
 
 import (
     "fmt"
+    "os"
 )
 
 func main() {
 
-test()
-  
+    err:=process()
+    if err!=nil{
+        fmt.Println("error is:", err)
+        return
+    }
 
+    fmt.Println("File Processed successfully")
+    
 }
 
 
-func test(){
-    defer fmt.Println("Last")
-    fmt.Println("First")
+func process()error{
+    f, err:=os.Open("file.txt")
+    if err!=nil{
+        return err
+    }
+    defer f.Close()
+
+    data:=make([]byte, 100)
+    _, err =f.Read(data)
+
+    if err!=nil{
+        return err
+    }
+    return nil
 }
+// test()
+
+
+// func test(){
+//     defer fmt.Println("Last")
+//     fmt.Println("First")
+// }
 
 
 // my:=Person{name:"Shariful islam", age:36}
