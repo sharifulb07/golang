@@ -1,5 +1,6 @@
 
 
+
 package main
 
 import (
@@ -7,34 +8,112 @@ import (
     "os"
 )
 
+
+
+
 func main() {
-
-    err:=process()
-    if err!=nil{
-        fmt.Println("error is:", err)
-        return
-    }
-
-    fmt.Println("File Processed successfully")
+    
+    
     
 }
 
+// process(ConsoleLogger{})
 
-func process()error{
-    f, err:=os.Open("file.txt")
-    if err!=nil{
-        return err
-    }
-    defer f.Close()
 
-    data:=make([]byte, 100)
-    _, err =f.Read(data)
 
-    if err!=nil{
-        return err
-    }
-    return nil
-}
+// type Logger interface{
+//     Log(msg string)
+// }
+
+
+// type ConsoleLogger struct{}
+
+// func (ConsoleLogger) Log(msg string){
+//     fmt.Println("This is the message: ", msg)
+// }
+
+// type FileLogger struct{
+//     file *os.File
+// }
+
+
+// func (f FileLogger) Log(msg string){
+//     f.file.WriteString(msg+"\n")
+// }
+
+// func process(l Logger){
+//     l.Log("Process is started.............")
+// }
+
+
+
+
+// var x interface{}
+//     x=10
+//     fmt.Println(x)
+//     x="Shariful Islam"
+//     fmt.Println(x)
+//     x=[]int{12,14,15,17}
+//     fmt.Println(x)
+    
+
+
+// type shape interface{
+//     Area() float64
+// }
+
+// type Rectangle struct{
+//     width, height float64
+// }
+
+// func (r Rectangle) Area()float64{
+//     return r.width*r.height
+// }
+
+
+// type Circle struct{
+//     radius float64
+// }
+
+// func (r Circle) Area()float64{
+//     return 3.1416*r.radius*r.radius
+// }
+
+// func printArea(s shape){
+//     fmt.Printf("This Area:%v \n", s.Area())
+// }
+
+// r:=Rectangle{width:10, height:30}
+// c:=Circle{30}
+// printArea(r)
+// printArea(c)
+
+// err:=process()
+// if err!=nil{
+//     fmt.Println("error is:", err)
+//     return
+// }
+
+// fmt.Println("File Processed successfully")
+
+
+
+
+// func process()error{
+//     f, err:=os.Open("file.txt")
+//     if err!=nil{
+//         return err
+//     }
+//     defer f.Close()
+
+//     data:=make([]byte, 100)
+//     _, err =f.Read(data)
+
+//     if err!=nil{
+//         return err
+//     }
+//     return nil
+// }
 // test()
 
 
