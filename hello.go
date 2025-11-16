@@ -5,17 +5,46 @@ package main
 
 import (
     "fmt"
-    "os"
+    
 )
+
+func worker(ch chan string){
+    ch<-"Task Completed"
+}
+
+
 
 
 
 
 func main() {
-    
-    
+
+    ch:=make(chan string)
+
+    go worker(ch)
+
+    msg:=<-ch
+
+    fmt.Println(msg)
+
     
 }
+
+
+
+// go printMessage()
+
+// time.Sleep(3*time.Second)
+// fmt.Println("Main finished")
+
+
+
+// Goroutines example 
+
+// func printMessage(){
+//     fmt.Println("Goroutine is started......")
+// }
+
 
 // process(ConsoleLogger{})
 
