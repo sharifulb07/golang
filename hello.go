@@ -1,35 +1,85 @@
 
-
-
 package main
 
 import (
     "fmt"
-    
+    "sync"
 )
 
-func worker(ch chan string){
-    ch<-"Task Completed"
+func sendonly(ch chan<- int, wg *sync.WaitGroup) {
+    defer wg.Done()
+    ch <- 100
+    fmt.Println("Value 100 Sent")
 }
 
-
-
-
-
+func receivedonly(ch <-chan int, wg *sync.WaitGroup) {
+    defer wg.Done()
+    value := <-ch
+    fmt.Println("Received:", value)
+}
 
 func main() {
+    ch := make(chan int)
+    var wg sync.WaitGroup
 
-    ch:=make(chan string)
+    wg.Add(2) // we have 2 goroutines
 
-    go worker(ch)
+    go sendonly(ch, &wg)
+    go receivedonly(ch, &wg)
 
-    msg:=<-ch
-
-    fmt.Println(msg)
-
-    
+    wg.Wait() // wait for goroutines to finish
+    fmt.Println("Done")
 }
 
+
+
+// unbuffered channels example 
+// ch:=make(chan int, 5)
+
+// fmt.Println("first number")
+// ch<-1
+// fmt.Println("Second number")
+// ch <-2
+// ch <-10
+// ch <-5
+// ch <-100
+
+// fmt.Println("Both numbers is sending ")
+
+// fmt.Println(<-ch)
+// fmt.Println(<-ch)
+// fmt.Println(<-ch)
+// fmt.Println(<-ch)
+// fmt.Println(<-ch)
+
+
+// ch:=make(chan string)
+
+// go func (){
+//     fmt.Println("Sending....")
+//     ch <-"Hello World Project"
+//     fmt.Println("Message is sent")
+// }()
+
+// time.Sleep(3*time.Second)
+// fmt.Println("Receiver is ready to receive")
+// msg:= <-ch
+// fmt.Print("received %v", msg)
+
+
+
+
+// ch:=make(chan string)
+
+// go worker(ch)
+
+// msg:=<-ch
+
+// fmt.Println(msg)
+
+// func worker(ch chan string){
+//     ch<-"Task Completed"
+// }
 
 
 // go printMessage()
