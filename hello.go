@@ -5,17 +5,24 @@ import (
     "fmt"
 )
 
-
+var p int =40
 
 func main() {
 
+    var a, b, c int
 
-    
+    a=10
+    b=50
+    c=a+b
+    fmt.Printf("Value of a=%d, b=%d, c=%d\n", a, b, c)
+    fmt.Println(p)
+    p=1000
+    fmt.Println(p)
 
     
 }
 
-
+// variable 
 
 
 
