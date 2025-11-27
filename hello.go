@@ -3,34 +3,133 @@ package main
 
 import (
     "fmt"
-    "sync"
 )
 
-func sendonly(ch chan<- int, wg *sync.WaitGroup) {
-    defer wg.Done()
-    ch <- 100
-    fmt.Println("Value 100 Sent")
-}
 
-func receivedonly(ch <-chan int, wg *sync.WaitGroup) {
-    defer wg.Done()
-    value := <-ch
-    fmt.Println("Received:", value)
-}
 
 func main() {
-    ch := make(chan int)
-    var wg sync.WaitGroup
 
-    wg.Add(2) // we have 2 goroutines
 
-    go sendonly(ch, &wg)
-    go receivedonly(ch, &wg)
+    
 
-    wg.Wait() // wait for goroutines to finish
-    fmt.Println("Done")
+    
 }
 
+
+
+
+
+
+// array in go program 
+
+// var arr[]int=[]int {11,22,33,44,55,66,77,88}
+
+//     fmt.Println(arr)
+
+// fmt.Println(addNums(10, 205))
+
+
+// var addNums=func(a,b int) int{
+//     return a+b
+// }
+
+// interface as generic types
+
+
+// var many interface{}="Adiyat Islam"
+// fmt.Println(many)
+
+// many=12
+// fmt.Println(many)
+
+// many=true
+// fmt.Println(many)
+
+// many="Ashia Khatun"
+// fmt.Println(many)
+
+// struct
+
+// type Student struct{
+//     Name string
+//     Age int 
+// }
+
+
+// var person Student=Student{"Shariful islam", 37}
+// fmt.Println(person.Name)
+// fmt.Println(person.Age)
+   
+
+
+// pointer 
+
+// var x int=32
+// var ptr *int=&x
+// fmt.Println(x)
+// fmt.Println(&ptr)
+// fmt.Println(*ptr)
+// fmt.Println(ptr)
+
+
+
+
+
+// var num1 float32=3.14159
+//     var num2 float64=2.1485787558877455
+
+//     var complexNum1 complex64=complex(1.0,2.0)
+//     var complexNum2 complex64=complex(3.0,5.0)
+
+//     fmt.Println("first number",num1 )
+//     fmt.Println("Second number",num2 )
+
+//     fmt.Println("first complex  number",complexNum1 )
+//     fmt.Println("second complex number",complexNum2 )
+    
+//     fmt.Println("first complex number",real(complexNum2 ))
+//     fmt.Println("second complex number",imag(complexNum2 ))
+    
+
+
+// var var1 bool=true
+// var var2 bool=true
+
+// fmt.Println(var1)
+// fmt.Println(var2)
+
+// if var1 {
+//     fmt.Println("It is true")
+// }
+// if var2 {
+//     fmt.Println("It is false")
+// }
+
+
+
+// func sendonly(ch chan<- int, wg *sync.WaitGroup) {
+//     defer wg.Done()
+//     ch <- 100
+//     fmt.Println("Value 100 Sent")
+// }
+
+// func receivedonly(ch <-chan int, wg *sync.WaitGroup) {
+//     defer wg.Done()
+//     value := <-ch
+//     fmt.Println("Received:", value)
+// }
+
+
+// ch := make(chan int)
+// var wg sync.WaitGroup
+
+// wg.Add(2) // we have 2 goroutines
+
+// go sendonly(ch, &wg)
+// go receivedonly(ch, &wg)
+
+// wg.Wait() // wait for goroutines to finish
+// fmt.Println("Done")
 
 
 // unbuffered channels example 
