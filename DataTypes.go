@@ -181,6 +181,17 @@ func main() {
 // b:=float64(a)
 // fmt.Printf("%T",b)
 
+// | Category    | Types                 |
+// | ----------- | --------------------- |
+// | Numeric     | int, float32, float64 |
+// | Boolean     | bool                  |
+// | Text        | string, rune, byte    |
+// | Collection  | array, slice, map     |
+// | Custom      | struct                |
+// | Reference   | pointer               |
+// | Generic     | interface{}           |
+// | Concurrency | channel               |
+// | Behavior    | function              |
 
 
 }
