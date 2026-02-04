@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	
+	"sort"
 )
 
 // func reverse(arr[] string){
@@ -36,8 +36,6 @@ import (
 // 	return  arr[:len(arr)-1]
 // }
 
-
-
 // rotate right by k position
 
 // func rotateright(arr [] int, k int)[] int{
@@ -50,8 +48,6 @@ import (
 // 	k=k%n
 // 	return  append(arr[k:], arr[:k]...)
 // }
-
-
 
 // func findMinMax(arr[]int)(int, int){
 
@@ -72,8 +68,7 @@ import (
 // 		}
 // 	}
 
-// 	return min, max 
-
+// 	return min, max
 
 // }
 
@@ -85,6 +80,35 @@ func main() {
 
 
 	arr:=[]int{1,2,3,4,5,6,7,8,9}
+
+	// ascending sort
+	sort.Ints(arr)
+
+	fmt.Println(arr)
+
+	// descending sort
+	sort.Sort(sort.Reverse(sort.IntSlice(arr)))
+	fmt.Println(arr)
+
+	names:=[]string{"Adiyat", "Sharif", "hunaif", "Ruhul Amin", "Go man"}
+
+	
+	sort.Strings(names)
+	fmt.Println(names)
+
+	sort.Sort(sort.Reverse(sort.StringSlice(names)))
+	fmt.Println(names)
+
+
+	speed:=[]float64{12.0,20.45, 32.90, 21.1, 23.3} 
+
+	sort.Float64s(speed)
+
+	fmt.Println(speed)
+
+	sort.Sort(sort.Reverse(sort.Float64Slice(speed)))
+	fmt.Println(speed)
+
 
 
 
