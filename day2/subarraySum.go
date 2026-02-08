@@ -4,9 +4,9 @@ import "fmt"
 
 func main(){
 
-arr:=[]int{1,2,4,5,6,11,8,10,7,8,}
+arr:=[]int{1,2,4,5,6,11,10,8,7}
 
-fmt.Println(subarraySum(arr, 19))
+fmt.Println(subarraySum(arr, 18))
 
 
 
