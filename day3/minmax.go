@@ -2,35 +2,39 @@ package main
 
 import "fmt"
 
-// func min(a int, b int) int{
-// 	if a<b{
-// 		return a
-// 	}
-// 	return b
-// }
 
 
-func minNum(num[]int) int{
-	if len(num)==0{
-		return  0
-	}
+func reverseStr(s string) bool {
 
-	min:=num[0]
-	
-	for _, value:=range num{
-		// 5,3
-		// 3<5
-		// 5->3
 
-		if value<min{
-			min=value
+	runes:=[]rune(s)
+	left, right:=0, len(runes)-1
+	count:=0
+
+	for left<right{
+		if(runes[left]==runes[right]){
+			runes[left], runes[right]=runes[right], runes[left]
+		left++
+		right--
+		count++
 		}
+		
 	}
-	return min
+	if count==len(runes)/2{
+		return true
+	}
+
+	return  false
+
+
+	// return  string(runes)
 }
 
 func main(){
 
-	arr:=[]int{9,8,10,11,5,6,7}
-	fmt.Println(minNum(arr))
+	str:="wowsome"
+	fmt.Println(reverseStr(str))
+
+	
+
 }
