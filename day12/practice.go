@@ -1,24 +1,20 @@
-package main 
-import "fmt"
+package main
 
-func main() {
+import (
+	"fmt"
+	"net/http"
+)
 
-	fmt.Println("Hello, World!")
-	fmt.Println("The result of addition is ", processOp(10, 20, add))
-}
+func handler(w http.ResponseWriter, r *http.Request){
 
-
-func processOp(a int, b int, op func (x int, y int)int) int {
-
-	fmt.Println("Process Operation works very well now ")
-	return op(a, b)
-	
+	fmt.Fprintln(w, "Server is runing very well ")
 }
 
 
 
-func add(a int, b int) int {
+func main(){
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":8080", nil)
 
-	return a + b
 
 }
