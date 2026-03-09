@@ -48,5 +48,6 @@ func main(){
 	target:=5
 
 	fmt.Println(search(nums,target))
+	
 
 }
