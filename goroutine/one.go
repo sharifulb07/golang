@@ -1,3 +1,5 @@
+// concurrent sum calculator
+
 package main
 
 import (
@@ -5,29 +7,40 @@ import (
 	"sync"
 )
 
-func main() {
-	counter:=0
 
-	var wg sync.WaitGroup
-	// var mu sync.Mutex
+func partialSum(nums[]int, ch chan int, wg *sync.WaitGroup){
 
-	for i:=0;i<10;i++{
-		wg.Add(1)
+	defer wg.Done()
+	sum:=0
 
-		go func ()  {
-			defer wg.Done()
-
-			// mu.Lock()
-			counter++
-			fmt.Println(counter)
-			// mu.Unlock()
-
-		}()
+	for _, num:=range nums{
+		sum+=num 
 	}
+	ch <- sum
+}
 
-	wg.Wait()
 
-	fmt.Println("all go routine are finished ")
+func main(){
+	arr:=[]int {12,5,4,7,89,63,64,2,8,9}
+
+	mid:=len(arr)/2
+
+	ch:=make(chan int, 2)
+	var wg sync.WaitGroup
+
+	wg.Add(2)
+
+go partialSum(arr[:mid], ch,&wg)
+go partialSum(arr[mid:], ch, &wg)
+
+wg.Wait()
+close(ch)
+
+total:=0
+for n:=range ch{
+	total+=n 
+}
+fmt.Println(total)
 
 
 }
